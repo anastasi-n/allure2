@@ -5,6 +5,7 @@
     "passed": "Passed",
     "knownissuesonly": "Known",
     "skipped": "Skipped",
+    "pending": "Pending",
     "unknown": "Unknown",
     "flaky": "Test is flaky"
   },

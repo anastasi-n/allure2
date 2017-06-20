@@ -16,6 +16,9 @@
   &_status_skipped {
     background: $background-skipped;
   }
+  &_status_pending {
+    background: $background-pending;
+  }
   &_status_unknown {
     background: $background-unknown;
   }
@@ -36,6 +39,9 @@
   }
   &_status_skipped::before {
     background: $color-skipped;
+  }
+  &_status_pending::before {
+    background: $color-pending;
   }
   &_status_unknown::before {
     background: $color-unknown;
@@ -85,6 +91,9 @@
   &_status_skipped {
     background: $color-skipped;
   }
+  &_status_pending {
+    background: $color-pending;
+  }
   &_status_unknown {
     background: $color-unknown;
   }
@@ -105,6 +114,9 @@
   }
   &_status_skipped {
     border-color: $color-skipped;
+  }
+  &_status_pending {
+    border-color: $color-pending;
   }
   &_status_unknown {
     border-color: $color-unknown;
@@ -127,6 +139,9 @@
   &_status_skipped {
     color: $color-skipped;
   }
+  &_status_pending {
+    color: $color-pending;
+  }
   &_status_unknown {
     color: $color-unknown;
   }
@@ -147,6 +162,9 @@
   }
   &_status_skipped {
     fill: $color-skipped;
+  }
+  &_status_pending {
+    fill: $color-pending;
   }
   &_status_unknown {
     fill: $color-unknown;

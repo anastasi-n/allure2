@@ -14,6 +14,7 @@ public enum Status implements Serializable {
     PASSED("passed"),
     KNOWN_ISSUES_ONLY("knownissuesonly"),
     SKIPPED("skipped"),
+    PENDING("pending"),
     UNKNOWN("unknown");
 
     private static final long serialVersionUID = 1L;

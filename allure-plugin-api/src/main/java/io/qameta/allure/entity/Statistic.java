@@ -22,12 +22,14 @@ public class Statistic implements Serializable {
     protected long broken;
     protected long skipped;
     protected long knownissuesonly;
+    protected long pending;
     protected long passed;
     protected long unknown;
 
     @JsonProperty
     public long getTotal() {
-        return getFailed() + getBroken() + getPassed() + getKnownissuesonly() + getSkipped() + getUnknown();
+        return getFailed() + getBroken() + getPassed() + getKnownissuesonly() + getSkipped() + getPending()
+               + getUnknown();
     }
 
     /**
@@ -53,6 +55,8 @@ public class Statistic implements Serializable {
                 return getKnownissuesonly();
             case SKIPPED:
                 return getSkipped();
+            case PENDING:
+                return getPending();
             default:
                 return getUnknown();
         }
@@ -95,6 +99,9 @@ public class Statistic implements Serializable {
             case SKIPPED:
                 setSkipped(getSkipped() + 1);
                 break;
+            case PENDING:
+                setPending(getPending() + 1);
+                break;
             default:
                 setUnknown(getUnknown() + 1);
                 break;
@@ -110,6 +117,7 @@ public class Statistic implements Serializable {
         setPassed(getPassed() + other.getPassed());
         setKnownissuesonly(getKnownissuesonly() + other.getKnownissuesonly());
         setSkipped(getSkipped() + other.getSkipped());
+        setPending(getPending() + other.getPending());
         setUnknown(getUnknown() + other.getUnknown());
     }
 
@@ -119,6 +127,7 @@ public class Statistic implements Serializable {
                 .thenComparing(Statistic::getPassed)
                 .thenComparing(Statistic::getKnownissuesonly)
                 .thenComparing(Statistic::getSkipped)
+                .thenComparing(Statistic::getPending)
                 .thenComparing(Statistic::getUnknown);
     }
 }

@@ -26,6 +26,10 @@ const icons = {
         className: 'fa fa-minus-circle fa-fw text_status_skipped',
         tooltip: 'status.skipped'
     },
+    pending: {
+        className: 'fa fa-question-circle fa-fw text_status_pending',
+        tooltip: 'status.pending'
+    },
     unknown: {
         className: 'fa fa-question-circle fa-fw text_status_unknown',
         tooltip: 'status.unknown'

@@ -7,7 +7,8 @@ const globalSettingsDefaults = {
     stepDisplayParams: {
         showStepStartTime: true,
         showDebugLogs: false
-    }
+    },
+    performanceShowPercentage: false
 };
 
 const treePluginDefaults = {
@@ -67,6 +68,14 @@ function getGlobalSettings() {
 
         setStepDisplayParams(value) {
             this.save('stepDisplayParams', value);
+        },
+
+        isPerformanceShowPercentage() {
+            return this.get('performanceShowPercentage');
+        },
+
+        setPerformanceShowPercentage(value) {
+            return this.save('performanceShowPercentage', value);
         }
     });
     const settings = new SettingsModel();

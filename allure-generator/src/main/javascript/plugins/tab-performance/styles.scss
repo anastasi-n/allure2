@@ -1,0 +1,16 @@
+.performance-list__table {
+  .table__col:first-child {
+    flex: 3;
+    min-width: 0;
+  }
+  .assertions-count {
+    flex: 0.5;
+  }
+}
+
+.performance-grid {
+  overflow: auto;
+  height: 100vh;
+  position: absolute;
+  width: 100%;
+}

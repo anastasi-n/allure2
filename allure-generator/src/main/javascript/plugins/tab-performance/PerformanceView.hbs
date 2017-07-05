@@ -1,0 +1,93 @@
+<h2 class="{{b 'pane' 'title'}}">
+    {{t 'tab.performance.name'}}
+    <span class="widget__subtitle">
+        {{t 'tab.performance.totalPages'}}: {{totalPages}}
+    </span>
+    <div class="tree__strut"></div>
+    <span class="performance-options"></span>
+</h2>
+
+<div class="{{b "table" hover=true}} {{b 'performance-list' 'table'}}">
+    <div class="{{b "table" "head"}}">
+        {{> ../../blocks/table/sortable-col field="pageUrl" title=(t 'tab.performance.pageUrl')}}
+        {{> ../../blocks/table/sortable-col field="loadsCount" title=(t 'tab.performance.loadsCount')}}
+        {{> ../../blocks/table/sortable-col field="minLoadTime" title=(t 'tab.performance.minLoadTime')}}
+        {{> ../../blocks/table/sortable-col field="maxLoadTime" title=(t 'tab.performance.maxLoadTime')}}
+        {{> ../../blocks/table/sortable-col field="averageLoadTime" title=(t 'tab.performance.averageLoadTime')}}
+        {{> ../../blocks/table/sortable-col field="totalAssertions" title=(t 'tab.performance.totalAssertions')}}
+        {{#if showPercentage}}
+            {{> ../../blocks/table/sortable-col field="percentagePassed" title=(t 'tab.performance.passed') class="assertions-count"}}
+            {{> ../../blocks/table/sortable-col field="percentageKnown" title=(t 'tab.performance.known') class="assertions-count"}}
+            {{> ../../blocks/table/sortable-col field="percentageFailed" title=(t 'tab.performance.failed') class="assertions-count"}}
+        {{else}}
+            {{> ../../blocks/table/sortable-col field="passedAssertions" title=(t 'tab.performance.passed') class="assertions-count"}}
+            {{> ../../blocks/table/sortable-col field="knownAssertions" title=(t 'tab.performance.known') class="assertions-count"}}
+            {{> ../../blocks/table/sortable-col field="failedAssertions" title=(t 'tab.performance.failed') class="assertions-count"}}
+        {{/if}}
+    </div>
+    {{#each pages}}
+        <div class="{{b "table" "row"}}">
+            <div class="{{b "table" "col"}}">
+                <a href="{{pageUrl}}" class="link" target="_blank">
+                    <div class="line-ellipsis">{{exclude-domain pageUrl}}</div>
+                </a>
+            </div>
+            <div class="{{b "table" "col"}}">
+                {{loadsCount}}
+            </div>
+            <div class="{{b "table" "col"}}">
+                {{divide minLoadTime 1000}} s
+            </div>
+            <div class="{{b "table" "col"}}">
+                {{divide maxLoadTime 1000}} s
+            </div>
+            <div class="{{b "table" "col"}}">
+                {{divide averageLoadTime 1000}} s
+            </div>
+            <div class="{{b "table" "col"}}">
+                {{totalAssertions}}
+            </div>
+            <div class="{{b "table" "col"}} assertions-count">
+                {{#if ../showPercentage}}
+                    {{#if (gt percentagePassed -1)}}
+                        {{percentagePassed}}%
+                    {{/if}}
+                    <span class="label"></span>
+                {{else}}
+                    {{#if (gt passedAssertions 0)}}
+                        <span class="{{b "label" status="passed"}}">{{passedAssertions}}</span>
+                    {{/if}}
+                {{/if}}
+            </div>
+            <div class="{{b "table" "col"}} assertions-count">
+                {{#if ../showPercentage}}
+                    {{#if (gt percentageKnown -1)}}
+                        {{percentageKnown}}%
+                    {{/if}}
+                    <span class="label"></span>
+                {{else}}
+                    {{#if (gt knownAssertions 0)}}
+                        <span class="{{b "label" status="knownissuesonly"}}">{{knownAssertions}}</span>
+                    {{/if}}
+                {{/if}}
+            </div>
+            <div class="{{b "table" "col" }} assertions-count">
+                {{#if ../showPercentage}}
+                    {{#if (gt percentageFailed -1)}}
+                        {{percentageFailed}}%
+                    {{/if}}
+                    <span class="label"></span>
+                {{else}}
+                    {{#if (gt failedAssertions 0)}}
+                        <span class="{{b "label" status="failed"}}">{{failedAssertions}}</span>
+                    {{/if}}
+                {{/if}}
+            </div>
+        </div>
+    {{/each}}
+    {{#if overLimit}}
+        <a class="{{b "table" "row"}} clickable performance__expand">
+            <div class="{{b "table" "col" center=true}}">{{t 'tab.performance.showAll'}}</div>
+        </a>
+    {{/if}}
+</div>

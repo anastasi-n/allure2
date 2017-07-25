@@ -1,1 +1,1 @@
-export const values = ['failed', 'broken', 'passed', 'knownissuesonly', 'skipped', 'pending', 'notcovered'];
+export const values = ['broken', 'failed', 'knownissuesonly', 'pending', 'skipped', 'passed', 'notcovered'];

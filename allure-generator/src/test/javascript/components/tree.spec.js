@@ -93,10 +93,10 @@ describe('Tree', function () {
             groupNode({
                 name: 'B group node',
                 children: [
-                    caseNode({name: 'Node in B group likes to be tested', status: 'unknown', duration: 1})
+                    caseNode({name: 'Node in B group likes to be tested', status: 'passed', duration: 1})
                 ]
             }),
-            caseNode({name: 'Like other nodes', status: 'unknown', duration: 5}),
+            caseNode({name: 'Like other nodes', status: 'passed', duration: 5}),
         ]
     });
 
@@ -115,7 +115,7 @@ describe('Tree', function () {
             const {view, page} = renderView({children: []});
             expect(page.nodes().length).toBe(0);
             sortTree({ascending: false});
-            filterTree({failed: true, broken: false, passed: false, skipped: false, unknown: false});
+            filterTree({failed: true, broken: false, passed: false, skipped: false});
             settings.setShowGroupInfo(true);
             expect(page.nodes().length).toBe(0);
             view.destroy();
@@ -167,16 +167,11 @@ describe('Tree', function () {
 
     describe('filtering', () => {
 
-        it('should hide nodes', () => {
-            filterTree({failed: false, broken: false, passed: false, skipped: false, unknown: false});
+        it('should hiding nodes', () => {
+            filterTree({failed: false, broken: false, passed: false, skipped: false});
             expect(page.nodes().length).toBe(0);
 
-            filterTree({failed: false, broken: false, passed: false, skipped: false, unknown: true});
-            expect(page.nodes().length).toBe(3);
-            expect(page.node(0).text()).toMatch(/B group node/);
-            expect(page.node(2).text()).toMatch(/Like other nodes/);
-
-            filterTree({failed: true, broken: false, passed: false, skipped: false, unknown: false});
+            filterTree({failed: true, broken: false, passed: false, skipped: false});
             expect(page.nodes().length).toBe(2);
             expect(page.node(0).text()).toMatch(/A group node/);
             expect(page.node(1).text()).toMatch(/Second node/);

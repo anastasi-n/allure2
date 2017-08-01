@@ -29,8 +29,8 @@ import './plugins/widget-summary';
 import './plugins/widget-history-trend';
 import './plugins/widget-suites';
 import './plugins/widget-categories';
-import './plugins/widget-environment';
 import './plugins/widget-executor';
+import './plugins/widget-environment-configuration';
 import './plugins/widget-known-issues';
 
 import './plugins/testresult-description';

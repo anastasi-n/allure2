@@ -1,0 +1,23 @@
+<h2 class="widget__title">
+    {{t 'widget.environmentConfiguration.name'}}
+</h2>
+{{#each items}}
+    <h3>{{categoryName}}</h3>
+    <div class="table  table_hover widget__table">
+        {{#each (array-limit environmentItems categoryLimit)}}
+            <div class="{{b "table" "row"}}" disabled>
+                <div class="{{b "table" "col"}} long-line">
+                    {{name}}
+                </div>
+                <div class="{{b "table" "col"}} long-line">
+                    {{linky values}}
+                </div>
+            </div>
+        {{/each}}
+        {{#if (gt environmentItems.length categoryLimit)}}
+            <a class="{{b "table" "row"}} clickable environment-widget__expand" data-category="{{categoryName}}">
+                <div class="{{b "table" "col" center=true}}">{{t 'widget.environmentConfiguration.showAll'}}</div>
+            </a>
+        {{/if}}
+    </div>
+{{/each}}

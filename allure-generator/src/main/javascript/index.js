@@ -24,16 +24,11 @@ import './plugins/widget-status';
 import './plugins/widget-severity';
 import './plugins/widget-duration';
 import './plugins/widget-duration-trend';
-import './plugins/widget-retry-trend';
-import './plugins/widget-categories-trend';
 import './plugins/widget-mappings';
 import './plugins/widget-groups';
 
 import './plugins/widget-summary';
 import './plugins/widget-history-trend';
-import './plugins/widget-suites';
-import './plugins/widget-categories';
-import './plugins/widget-executor';
 import './plugins/widget-timeline';
 import './plugins/widget-environment-configuration';
 import './plugins/widget-known-issues';

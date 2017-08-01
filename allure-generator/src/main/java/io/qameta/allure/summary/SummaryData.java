@@ -21,6 +21,9 @@ public class SummaryData implements Serializable {
     protected String reportName;
     protected List<String> testRuns = new ArrayList<>();
     protected Statistic statistic = new Statistic();
+    protected Statistic storiesStatistic = new Statistic();
+    protected Statistic scenariosStatistic = new Statistic();
+    protected Statistic scenariosWithoutExamplesStatistic = new Statistic();
     protected GroupTime time = new GroupTime();
 
 }

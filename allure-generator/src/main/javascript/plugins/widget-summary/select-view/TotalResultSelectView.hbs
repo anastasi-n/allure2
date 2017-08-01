@@ -1,0 +1,5 @@
+<ul class="{{b 'option-select' 'menu'}}">
+    {{#each options}}
+        <li class="{{b 'option-select' 'item' active=(eq id ../currentOptionId)}}" data-id="{{id}}">{{t translation}}</li>
+    {{/each}}
+</ul>

@@ -41,6 +41,9 @@
       "launches_plural": "launches",
       "testResults": "test case",
       "testResults_plural": "test cases"
+      "scenariosWithoutExamples": "Scenarios (w/o examples)",
+      "scenarios": "Scenarios",
+      "stories": "Stories"
     },
     "trend": {
       "name": "Trend"

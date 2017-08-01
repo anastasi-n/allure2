@@ -2,7 +2,8 @@ import LocalStorageModel from '../data/localstorage/LocalStorageModel';
 
 const globalSettingsDefaults = {
     language: 'en',
-    sidebarCollapsed: false
+    sidebarCollapsed: false,
+    totalResultSelectOption: 'scenariosWithoutExamplesStatistic'
 };
 
 const treePluginDefaults = {
@@ -46,6 +47,14 @@ function getGlobalSettings() {
 
         setSidebarCollapsed(value) {
             return this.save('sidebarCollapsed', value);
+        },
+
+        getTotalResultSelectOption() {
+            return this.get('totalResultSelectOption');
+        },
+
+        setTotalResultSelectOption(value) {
+            return this.save('totalResultSelectOption', value);
         }
     });
     const settings = new SettingsModel();

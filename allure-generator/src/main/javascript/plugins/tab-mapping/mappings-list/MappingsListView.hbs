@@ -1,0 +1,56 @@
+<a class="pane__overlay" href="#mappings"></a>
+{{#each mappingTypes}}
+    <h2 class="pane__title {{b "mappings-list" "type"}}">
+        {{type}}
+    </h2>
+    <div class="{{b "table" hover=true}}">
+        <div class="{{b "table" "head"}} mappings-table__head">
+            {{> ../../../blocks/table/sortable-col field="name" title="Name" sorting=../sorting}}
+            <div class="{{b "table" "col"}} {{b "mappings-list" "status"}}">
+                <span>Status</span>
+            </div>
+        </div>
+        {{#each mappings}}
+            <div class="mappings-list__mapping">
+                <div class="{{b "table" "row"}} mappings-list__mapping-row">
+                    <div class="{{b "table" "col"}} mappings-list__name mappings-list__mapping-name">
+                        {{name}}
+                    </div>
+                    <div class="{{b "table" "col"}}">
+                        {{status-bar statistic}}
+                    </div>
+                </div>
+                {{#each stories}}
+                    <div class="mappings-list__story">
+                        <div class="{{b "table" "row"}} mappings-list__story-row">
+                            <div class="{{b "table" "col"}} mappings-list__story-title">
+                                {{title}}
+                            </div>
+                            <div class="{{b "table" "col"}}">
+                                {{status-bar statistic}}
+                            </div>
+                        </div>
+                        {{#each testCases}}
+                            <a class="{{b "table" "row"}} mappings-list__testcase" data-uid="{{uid}}" href="#mappings/{{uid}}">
+                                <div class="{{b "table" "col"}} mappings-list__testcase-title">
+                                    {{name}}
+                                </div>
+                                <div class="{{b "table" "col"}}">
+                                    <span class="label label_status_{{status}}">
+                                        {{#if (eq status "knownissuesonly")}}
+                                            KNOWN
+                                        {{else if (eq status "notcovered")}}
+                                            NOT COVERED
+                                        {{else}}
+                                            {{status}}
+                                        {{/if}}
+                                    </span>
+                                </div>
+                            </a>
+                        {{/each}}
+                    </div>
+                {{/each}}
+            </div>
+        {{/each}}
+    </div>
+{{/each}}

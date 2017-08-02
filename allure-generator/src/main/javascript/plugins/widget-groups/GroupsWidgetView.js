@@ -1,7 +1,7 @@
 import template from './GroupsWidgetView.hbs';
 import {View} from 'backbone.marionette';
 import {className, regions} from '../../decorators';
-import GroupsChartView from '../../components/graph-groups-chart/GroupsChartView';
+import PieChartView from '../../components/graph-pie-dynamic-chart/PieChartView';
 
 @className('groups-widget')
 @regions({
@@ -11,7 +11,7 @@ export default class GroupsWidgetView extends View {
     template = template;
 
     onRender() {
-        this.showChildView('chart', new GroupsChartView({
+        this.showChildView('chart', new PieChartView({
             model: this.getGroupsChartData(),
             showLegend: true
         }));
@@ -19,15 +19,12 @@ export default class GroupsWidgetView extends View {
 
     getGroupsChartData() {
         const groupsData = this.model.get('items');
-        const totalScenarios = this.model.length;
-        var colorIncrementAmount = Math.floor(0xffffff/(groupsData.length + 1) - 5000);
         return groupsData.map(function(group) {
             var value = group.testCaseCount;
             return {
                 name: group.groupName,
                 value: value,
-                part: value / totalScenarios,
-                color: '#' + (0x1000000 + (colorIncrementAmount * (groupsData.indexOf(group) + 1)) + Math.random()*100000).toString(16).substr(1,6)
+                part: value / this.model.length
             };
         }, this);
     }

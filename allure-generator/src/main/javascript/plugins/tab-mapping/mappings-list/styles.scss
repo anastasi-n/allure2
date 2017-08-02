@@ -1,0 +1,44 @@
+@import "../../../variables.scss";
+.mappings-list {
+    &__type {
+        text-transform: capitalize;
+    }
+    &__mapping-name,
+    &__story-title {
+        &:before {
+            content: ' ';
+            display: inline-block;
+            vertical-align: middle;
+            transition: transform 0.1s;
+            background: url(../../../blocks/arrow/arrow.svg) center no-repeat;
+            width: 14px;
+            height: 14px;
+        }
+    }
+    &__story,
+    &__testcase {
+        display: none;
+        padding-left: 2 * $gap-size;
+    }
+    &__mapping-row,
+    &__story-row {
+        cursor: pointer;
+    }
+    &__mapping-row_expanded {
+        .mappings-list__mapping-name:before {
+            transform: rotate(90deg);
+        }
+        &~.mappings-list__story {
+            display: flex;
+            flex-direction: column;
+        }
+    }
+    &__story-row_expanded {
+        .mappings-list__story-title:before {
+            transform: rotate(90deg);
+        }
+        &~.mappings-list__testcase {
+            display: flex;
+        }
+    }
+}

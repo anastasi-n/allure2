@@ -7,7 +7,7 @@ import {select} from 'd3-selection';
 import escape from '../../utils/escape';
 
 
-class GroupsChartView extends BaseChartView {
+class PieChartView extends BaseChartView {
 
     initialize(options) {
         this.options = options;
@@ -18,6 +18,7 @@ class GroupsChartView extends BaseChartView {
         this.pie = pie().sort(null).value(d => d.value);
         this.tooltip = new TooltipView({position: 'center'});
         this.data = this.model;
+        this.updateChartColors();
     }
 
     setupViewport() {
@@ -89,6 +90,13 @@ class GroupsChartView extends BaseChartView {
 </div>`;
     }
 
+    updateChartColors() {
+        var colorIncrementAmount = Math.floor(0xffffff / (this.data.length + 1) - 5000);
+        this.data.forEach(d => {
+            d['color'] = '#' + (0x1000000 + (colorIncrementAmount * (this.data.indexOf(d) + 1)) + Math.random() * 100000).toString(16).substr(1,6);
+        });
+    }
+
     @on('mouseleave .chart__legend-row')
     onLegendOut() {
         this.hideTooltip();
@@ -104,4 +112,4 @@ class GroupsChartView extends BaseChartView {
     }
 }
 
-export default GroupsChartView;
+export default PieChartView;

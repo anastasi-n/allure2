@@ -5,7 +5,7 @@ import {arc, pie} from 'd3-shape';
 import {interpolate} from 'd3-interpolate';
 import {select} from 'd3-selection';
 import escape from '../../utils/escape';
-
+import limit from '../../helpers/limit';
 
 class PieChartView extends BaseChartView {
 
@@ -24,7 +24,8 @@ class PieChartView extends BaseChartView {
     setupViewport() {
         super.setupViewport();
         if(this.showLegend) {
-            this.$el.append(this.getLegendTpl());
+            const width = this.$el.outerWidth();
+            this.$el.append(this.getLegendTpl(width * 0.4));
         }
         return this.svg;
     }
@@ -35,7 +36,7 @@ class PieChartView extends BaseChartView {
         const radius = width/4 - 10;
         var leftOffset = width / 2;
         if(this.showLegend) {
-            leftOffset -= 70;
+            leftOffset -= width/5;
         }
         this.arc.innerRadius(0).outerRadius(radius);
 
@@ -81,11 +82,12 @@ class PieChartView extends BaseChartView {
         `;
     }
 
-    getLegendTpl() {
-        return `<div class="chart__legend">
+    getLegendTpl(maxWidth) {
+        const maxSymbols = maxWidth / 8;
+        return `<div class="chart__legend chart__legend__dynamic">
     ${this.data.map((item) =>
             `<div class="chart__legend-row" data-group="${item.name}">
-<span class="chart__legend-icon" style="background: ${item.color}"></span> ${item.name}</div>`
+<span class="chart__legend-icon" style="background: ${item.color}"></span> ${limit(item.name, maxSymbols)}</div>`
         ).join('')}
 </div>`;
     }

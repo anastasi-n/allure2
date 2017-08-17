@@ -31,6 +31,9 @@
     top: 10%;
     right: 10%;
     display: grid;
+    &__dynamic {
+      right: 5%;
+    }
   }
   &__legend-icon {
     position: relative;

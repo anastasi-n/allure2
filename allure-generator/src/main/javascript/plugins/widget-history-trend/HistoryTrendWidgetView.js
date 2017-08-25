@@ -19,7 +19,7 @@ class HistoryTrendWidgetView extends View {
             model: this.model,
             hideLines: true,
             hidePoints: true,
-            colors: scaleOrdinal(['#fd5a3e', '#ffd050', '#97cc64', '#aaa', '#d35ebe']).domain(values),
+            colors: scaleOrdinal(['#9f94bf', '#fd5a3e', '#ffd050', '#d35ebe', '#aaa', '#97cc64', '#6495ed']).domain(values),
             keys: values
         }));
     }

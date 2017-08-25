@@ -21,6 +21,7 @@ import io.qameta.allure.environment.Allure1EnvironmentPlugin;
 import io.qameta.allure.executor.ExecutorPlugin;
 import io.qameta.allure.history.HistoryPlugin;
 import io.qameta.allure.history.HistoryTrendPlugin;
+import io.qameta.allure.history.NullTrendManager;
 import io.qameta.allure.influxdb.InfluxDbExportPlugin;
 import io.qameta.allure.launch.LaunchPlugin;
 import io.qameta.allure.mail.MailPlugin;
@@ -76,9 +77,9 @@ public final class DummyReportGenerator {
             new CategoriesPlugin(),
             new CategoriesTrendPlugin(),
             new HistoryPlugin(),
-            new HistoryTrendPlugin(),
+            new HistoryTrendPlugin(new NullTrendManager<>()),
             new DurationPlugin(),
-            new DurationTrendPlugin(),
+            new DurationTrendPlugin(new NullTrendManager<>()),
             new StatusChartPlugin(),
             new TimelinePlugin(),
             new SuitesPlugin(),

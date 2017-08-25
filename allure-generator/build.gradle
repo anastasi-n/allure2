@@ -63,8 +63,9 @@ dependencies {
     testCompile('junit:junit')
     testCompile('org.apache.commons:commons-text')
     testCompile('org.assertj:assertj-core')
-    testCompile('org.mockito:mockito-core')
-    testCompile('org.slf4j:slf4j-simple')
+    testCompile('org.powermock:powermock-api-mockito2:2.0.0-beta.5')
+    testCompile('org.powermock:powermock-module-junit4:2.0.0-beta.5')
+    testCompile('uk.org.lidalia:slf4j-test:1.2.0')
 }
 
 task sourceJar(type: Jar, dependsOn: classes) {

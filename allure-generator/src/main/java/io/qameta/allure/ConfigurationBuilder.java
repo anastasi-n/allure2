@@ -15,11 +15,9 @@ import io.qameta.allure.core.Plugin;
 import io.qameta.allure.core.ReportWebPlugin;
 import io.qameta.allure.core.TestsResultsPlugin;
 import io.qameta.allure.duration.DurationPlugin;
-import io.qameta.allure.duration.DurationTrendPlugin;
 import io.qameta.allure.executor.ExecutorPlugin;
 import io.qameta.allure.ga.GaPlugin;
 import io.qameta.allure.history.HistoryPlugin;
-import io.qameta.allure.history.HistoryTrendPlugin;
 import io.qameta.allure.influxdb.InfluxDbExportPlugin;
 import io.qameta.allure.launch.LaunchPlugin;
 import io.qameta.allure.mail.MailPlugin;
@@ -70,9 +68,7 @@ public class ConfigurationBuilder {
                 new CategoriesPlugin(),
                 new CategoriesTrendPlugin(),
                 new HistoryPlugin(),
-                new HistoryTrendPlugin(),
                 new DurationPlugin(),
-                new DurationTrendPlugin(),
                 new StatusChartPlugin(),
                 new TimelinePlugin(),
                 new SuitesPlugin(),

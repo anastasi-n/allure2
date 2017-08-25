@@ -80,12 +80,6 @@ public class ReportGeneratorTest {
     }
 
     @Test
-    public void shouldGenerateWidgetDurationTrendJson() throws Exception {
-        assertThat(output.resolve("widgets/duration-trend.json"))
-                .isRegularFile();
-    }
-
-    @Test
     public void shouldGenerateWidgetRetryTrendJson() throws Exception {
         assertThat(output.resolve("widgets/retry-trend.json"))
                 .isRegularFile();
@@ -100,12 +94,6 @@ public class ReportGeneratorTest {
     @Test
     public void shouldGenerateWidgetExecutorsJson() throws Exception {
         assertThat(output.resolve("widgets/executors.json"))
-                .isRegularFile();
-    }
-
-    @Test
-    public void shouldGenerateWidgetHistoryTrendJson() throws Exception {
-        assertThat(output.resolve("widgets/history-trend.json"))
                 .isRegularFile();
     }
 

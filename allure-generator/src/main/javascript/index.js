@@ -2,7 +2,6 @@ import App from './app';
 import $ from 'jquery';
 import 'file-loader?name=favicon.ico!./favicon.ico';
 
-import './blocks/arrow/styles.scss';
 import './blocks/executor-icon/styles.scss';
 import './blocks/status-details/styles.scss';
 import './blocks/table/styles.scss';

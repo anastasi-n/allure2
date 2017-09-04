@@ -1,9 +1,16 @@
-import MappingsLayout from './MappingsLayout';
+import MappingsTreeLayout from './MappingsTreeLayout';
 
 allure.api.addTab('mappings', {
     title: 'tab.mappings.name', icon: 'fa fa-map-signs',
-    route: 'mappings(/:testcaseId)(/:attachmentId)',
-    onEnter: (...routeParams) => new MappingsLayout({routeParams})
+    route: 'mappings(/)(:testGroup)(/)(:testResult)(/)(:testResultTab)(/)',
+    onEnter: (testGroup, testResult, testResultTab) => new MappingsTreeLayout({
+            testGroup,
+            testResult,
+            testResultTab,
+            tabName: 'tab.mappings.name',
+            baseUrl: 'mappings',
+            url: 'data/mappings.json'
+        })
 });
 
 allure.api.addTranslation('en', {

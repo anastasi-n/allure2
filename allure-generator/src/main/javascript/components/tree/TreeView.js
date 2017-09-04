@@ -117,10 +117,14 @@ class TreeView extends View {
 
     findElement(treeNode) {
         if (treeNode.testResult) {
-            return this.$(`[data-uid='${treeNode.testResult}'][data-parentUid='${treeNode.testGroup}']`);
+            return this.findTestResult(treeNode);
         } else {
             return this.$(`[data-uid='${treeNode.testGroup}']`);
         }
+    }
+
+    findTestResult(treeNode) {
+        return this.$(`[data-uid='${treeNode.testResult}'][data-parentUid='${treeNode.testGroup}']`);
     }
 
     @on('click .node__title')

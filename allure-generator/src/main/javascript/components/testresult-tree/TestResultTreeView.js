@@ -35,7 +35,12 @@ class TestResultTreeView extends SideBySideView {
 
     onRender() {
         const {tabName, baseUrl} = this.options;
-        const left = new TreeViewContainer({
+        const left = this.createTreeView(tabName, baseUrl);
+        this.showChildView('left', left);
+    }
+
+    createTreeView(tabName, baseUrl) {
+        return new TreeViewContainer({
             collection: this.tree,
             routeState: this.routeState,
             treeSorters: [],
@@ -43,7 +48,6 @@ class TestResultTreeView extends SideBySideView {
             baseUrl: baseUrl,
             csvUrl: this.csvUrl
         });
-        this.showChildView('left', left);
     }
 
     templateContext() {

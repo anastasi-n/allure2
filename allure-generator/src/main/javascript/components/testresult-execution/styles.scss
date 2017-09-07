@@ -53,6 +53,23 @@
   &_expanded > &__content {
     display: block;
   }
+  &_status {
+    &_failed {
+      color: $color-failed;
+    }
+    &_broken {
+      color: $color-broken;
+    }
+    &_knownissuesonly {
+      color: $color-knownissuesonly;
+    }
+    &_skipped {
+    color: $color-skipped;
+    }
+    &_pending {
+      color: $color-pending;
+    }
+  }
 }
 
 .parameters {

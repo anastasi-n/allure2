@@ -3,6 +3,7 @@
     "failed": "Failed",
     "broken": "Broken",
     "passed": "Passed",
+    "knownissuesonly": "Known",
     "skipped": "Skipped",
     "unknown": "Unknown",
     "flaky": "Test is flaky"
@@ -18,10 +19,10 @@
       "name": "Overview"
     },
     "categories": {
-      "name": "Categories"
+      "name": "Defects"
     },
     "suites": {
-      "name": "Suites"
+      "name": "Stories"
     },
     "graph": {
       "name": "Graphs"

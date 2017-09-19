@@ -12,6 +12,7 @@ public enum Status implements Serializable {
     FAILED("failed"),
     BROKEN("broken"),
     PASSED("passed"),
+    KNOWN_ISSUES_ONLY("knownissuesonly"),
     SKIPPED("skipped"),
     UNKNOWN("unknown");
 

@@ -18,6 +18,10 @@ const icons = {
         className: 'fa fa-check-circle fa-fw text_status_passed',
         tooltip: 'status.passed'
     },
+    knownissuesonly: {
+        className: 'fa fa-check-circle fa-fw text_status_knownissuesonly',
+        tooltip: 'status.knownissuesonly'
+    },
     skipped: {
         className: 'fa fa-minus-circle fa-fw text_status_skipped',
         tooltip: 'status.skipped'

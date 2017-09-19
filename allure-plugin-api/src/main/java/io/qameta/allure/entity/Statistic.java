@@ -21,12 +21,13 @@ public class Statistic implements Serializable {
     protected long failed;
     protected long broken;
     protected long skipped;
+    protected long knownissuesonly;
     protected long passed;
     protected long unknown;
 
     @JsonProperty
     public long getTotal() {
-        return getFailed() + getBroken() + getPassed() + getSkipped() + getUnknown();
+        return getFailed() + getBroken() + getPassed() + getKnownissuesonly() + getSkipped() + getUnknown();
     }
 
     /**
@@ -48,6 +49,8 @@ public class Statistic implements Serializable {
                 return getBroken();
             case PASSED:
                 return getPassed();
+            case KNOWN_ISSUES_ONLY:
+                return getKnownissuesonly();
             case SKIPPED:
                 return getSkipped();
             default:
@@ -86,6 +89,9 @@ public class Statistic implements Serializable {
             case PASSED:
                 setPassed(getPassed() + 1);
                 break;
+            case KNOWN_ISSUES_ONLY:
+                setKnownissuesonly(getKnownissuesonly() + 1);
+                break;
             case SKIPPED:
                 setSkipped(getSkipped() + 1);
                 break;
@@ -102,6 +108,7 @@ public class Statistic implements Serializable {
         setFailed(getFailed() + other.getFailed());
         setBroken(getBroken() + other.getBroken());
         setPassed(getPassed() + other.getPassed());
+        setKnownissuesonly(getKnownissuesonly() + other.getKnownissuesonly());
         setSkipped(getSkipped() + other.getSkipped());
         setUnknown(getUnknown() + other.getUnknown());
     }
@@ -110,6 +117,7 @@ public class Statistic implements Serializable {
         return Comparator.comparing(Statistic::getFailed)
                 .thenComparing(Statistic::getBroken)
                 .thenComparing(Statistic::getPassed)
+                .thenComparing(Statistic::getKnownissuesonly)
                 .thenComparing(Statistic::getSkipped)
                 .thenComparing(Statistic::getUnknown);
     }

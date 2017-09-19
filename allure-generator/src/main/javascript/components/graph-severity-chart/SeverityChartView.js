@@ -91,7 +91,7 @@ export default class SeverityChartView extends BaseChartView {
         const LIST_LIMIT = 10;
         const items = testResults.slice(0, LIST_LIMIT);
         const overLimit = testResults.length - items.length;
-        return `<b>${value} ${severity.toLowerCase()} test cases ${status.toLowerCase()}</b><br>
+        return `<b>${value} ${severity.toLowerCase()} test cases ${status === 'knownissuesonly' ? 'failed with known issues' : status.toLowerCase()}</b><br>
             <ul class="popover__list">
                 ${items.map(testResult => escape`<li>${testResult.name}</li>`).join('')}
             </ul>

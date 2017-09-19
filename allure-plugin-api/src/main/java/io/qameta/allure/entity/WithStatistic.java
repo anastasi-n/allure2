@@ -14,6 +14,7 @@ public interface WithStatistic {
         getStatistic().setFailed(other.getFailed() + getStatistic().getFailed());
         getStatistic().setBroken(other.getBroken() + getStatistic().getBroken());
         getStatistic().setPassed(other.getPassed() + getStatistic().getPassed());
+        getStatistic().setKnownissuesonly(other.getKnownissuesonly() + getStatistic().getKnownissuesonly());
         getStatistic().setSkipped(other.getSkipped() + getStatistic().getSkipped());
         getStatistic().setUnknown(other.getUnknown() + getStatistic().getUnknown());
     }

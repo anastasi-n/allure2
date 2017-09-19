@@ -1,0 +1,36 @@
+<h2 class="widget__title">
+    {{t 'widget.knownIssues.name'}}
+</h2>
+{{#if knownIssues}}
+    <div class="{{b "table" hover=true}} {{b 'testsuites-list' 'table'}}">
+        <div class="{{b "table" "head"}}">
+            {{> ../../blocks/table/sortable-col field="identifier" title=(t 'widget.knownIssues.identifier')}}
+            {{> ../../blocks/table/sortable-col field="count" title=(t 'widget.knownIssues.count')}}
+            {{> ../../blocks/table/sortable-col field="type" title=(t 'widget.knownIssues.type')}}
+            {{> ../../blocks/table/sortable-col field="status" title=(t 'widget.knownIssues.status')}}
+        </div>
+        {{#each knownIssues}}
+            <a class="{{b "table" "row"}}" href="{{link}}">
+                <div class="{{b "table" "col"}}">
+                    {{identifier}}
+                </div>
+                <div class="{{b "table" "col"}}">
+                    <span class="label label_status_{{#if fixed}}failed{{else}}{{#if (eq resolution "Won't fix")}}passed{{else}}knownissuesonly{{/if}}{{/if}}">{{count}}</span>
+                </div>
+                <div class="{{b "table" "col"}}">
+                    {{type}}
+                </div>
+                <div class="{{b "table" "col"}}">
+                    {{status}}{{#if resolution}}: {{resolution}}{{/if}}
+                </div>
+            </a>
+        {{/each}}
+        {{#if overLimit}}
+            <a class="{{b "table" "row"}} clickable known-issues-widget__expand">
+                <div class="{{b "table" "col" center=true}}">{{t 'widget.knownIssues.showAll'}}</div>
+            </a>
+        {{/if}}
+    </div>
+{{else}}
+    <div class="widget__noitems">{{t 'widget.knownIssues.empty'}}</div>
+{{/if}}

@@ -7,6 +7,7 @@ import {max} from 'd3-array';
 
 
 const severities = ['blocker', 'critical', 'normal', 'minor', 'trivial'];
+const severitiesTitles = {blocker: 'Tier 1', critical: 'Tier 2', normal: 'Tier 3', minor: 'Tier 4', trivial: 'Tier 5'};
 
 export default class SeverityChartView extends BaseChartView {
 
@@ -45,7 +46,7 @@ export default class SeverityChartView extends BaseChartView {
         this.status.rangeRound([0, this.x.step()]);
 
         this.makeBottomAxis({
-            tickFormat: d => d.toLowerCase(),
+            tickFormat: d => severitiesTitles[d],
             scale: this.x
         });
 
@@ -91,7 +92,7 @@ export default class SeverityChartView extends BaseChartView {
         const LIST_LIMIT = 10;
         const items = testResults.slice(0, LIST_LIMIT);
         const overLimit = testResults.length - items.length;
-        return `<b>${value} ${severity.toLowerCase()} test cases ${status === 'knownissuesonly' ? 'failed with known issues' : status.toLowerCase()}</b><br>
+        return `<b>${value} ${severitiesTitles[severity]} test cases ${status === 'knownissuesonly' ? 'failed with known issues' : status.toLowerCase()}</b><br>
             <ul class="popover__list">
                 ${items.map(testResult => escape`<li>${testResult.name}</li>`).join('')}
             </ul>

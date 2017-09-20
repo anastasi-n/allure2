@@ -1,0 +1,15 @@
+@import "../../../variables.scss";
+
+.toggle__button {
+    white-space: nowrap;
+}
+
+.coverage__toggle {
+    float: right;
+    margin: 0px;
+    padding: 1% 10%;
+}
+
+.summary_title_row {
+    display: inline-block;
+}

@@ -29,6 +29,10 @@ const icons = {
     pending: {
         className: 'fa fa-question-circle fa-fw text_status_pending',
         tooltip: 'status.pending'
+    },
+    notcovered: {
+        className: 'fa fa-question-circle fa-fw text_status_notcovered',
+        tooltip: 'status.notcovered'
     }
 };
 

@@ -6,6 +6,8 @@
     "knownissuesonly": "Known",
     "skipped": "Skipped",
     "pending": "Pending",
+    "notcovered": "Not covered",
+    "covered": "Сovered",
     "unknown": "Unknown",
     "flaky": "Test is flaky"
   },

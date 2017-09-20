@@ -32,8 +32,11 @@ export default class StatusWidgetView extends View {
             pending: 0,
             passed: 0,
             knownissuesonly: 0,
+            notcovered: 0,
             unknown: 0
         });
+        statistic.total -= statistic.notcovered;
+        delete statistic['notcovered'];
         return new Model({statistic});
     }
 }

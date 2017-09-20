@@ -8,7 +8,8 @@ const globalSettingsDefaults = {
         showStepStartTime: true,
         showDebugLogs: false
     },
-    performanceShowPercentage: false
+    performanceShowPercentage: false,
+    coverageChecked: false
 };
 
 const treePluginDefaults = {
@@ -19,7 +20,8 @@ const treePluginDefaults = {
         pending: true,
         unknown: true,
         passed: true,
-        knownissuesonly: true
+        knownissuesonly: true,
+        notcovered: true
     },
     showGroupInfo: false,
     treeSorting: {
@@ -76,6 +78,14 @@ function getGlobalSettings() {
 
         setPerformanceShowPercentage(value) {
             return this.save('performanceShowPercentage', value);
+        },
+
+        isCoverageChecked() {
+            return this.get('coverageChecked');
+        },
+
+        setCoverageChecked(value) {
+            return this.save('coverageChecked', value);
         }
     });
     const settings = new SettingsModel();

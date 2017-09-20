@@ -92,8 +92,8 @@ class PieChartView extends BaseChartView {
     }
 
     getChartTitle() {
-        const {passed, total} = this.statistic;
-        return this.formatNumber((passed || 0) / total * 100) + '%';
+        var passed = 'passed' in this.statistic ? this.statistic.passed : this.statistic.covered;
+        return this.formatNumber((passed || 0) / this.statistic.total * 100) + '%';
     }
 
     getTooltipContent({data}) {
@@ -109,7 +109,7 @@ class PieChartView extends BaseChartView {
 
     getLegendTpl() {
         return `<div class="chart__legend">
-    ${values.map((status) =>
+    ${values.filter((status) => status !== 'notcovered').map((status) =>
             `<div class="chart__legend-row" data-status="${status}">
 <span class="chart__legend-icon chart__legend-icon_status_${status}"></span> ${translate('status.' + status)}</div>`
         ).join('')}

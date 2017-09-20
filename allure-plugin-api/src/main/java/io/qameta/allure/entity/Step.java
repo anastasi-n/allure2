@@ -26,5 +26,6 @@ public class Step implements Serializable, Summarizable {
     protected List<Step> steps = new ArrayList<>();
     protected List<Attachment> attachments = new ArrayList<>();
     protected List<Parameter> parameters = new ArrayList<>();
+    protected boolean muted;
 
 }

@@ -14,6 +14,9 @@
                             {{else}}
                                 <span class="step__status">{{allure-icon status}}</span>
                             {{/if}}
+                            <span class="step__time step-time {{#unless ../stepDisplayParams.showStepStartTime}}step-time__hidden{{/unless}}">
+                                [{{time time.start}}]
+                            </span>
                             {{name}}
                             {{> ../../blocks/step-stats/step-stats . baseUrl=../../baseUrl}}
                         </div>
@@ -23,19 +26,13 @@
                             {{#each attachments}}
                                 {{> ../../blocks/attachment-row/attachment-row . baseUrl=../../baseUrl}}
                             {{/each}}
-                            {{#if shouldDisplayMessage}}
-                                {{~> ../../blocks/status-details/status-details .}}
-                            {{/if}}
                         </div>
                     </div>
                 {{else}}
-                    {{~> steps-list steps=steps baseUrl=../baseUrl}}
+                    {{~> steps-list steps=steps baseUrl=../baseUrl stepDisplayParams=../stepDisplayParams}}
                     {{#each attachments}}
                         {{> ../../blocks/attachment-row/attachment-row . baseUrl=../../baseUrl}}
                     {{/each}}
-                    {{#if shouldDisplayMessage}}
-                        {{~> ../../blocks/status-details/status-details .}}
-                    {{/if}}
                 {{/if}}
             {{/each}}
         </div>

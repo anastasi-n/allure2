@@ -3,13 +3,17 @@ import './styles.scss';
 import AttachmentView from '../attachment/AttachmentView';
 import template from './TestResultExecutionView.hbs';
 import router from '../../router';
-import {className, on} from '../../decorators';
+import {className, on, regions} from '../../decorators';
 import {makeArray} from '../../utils/arrays';
+import settings from '../../utils/settings';
 import {Model} from 'backbone';
 import {View} from 'backbone.marionette';
-
+import ExecutionDisplayToggleView from '../execution-display-toggle/ExecutionDisplayToggleView';
 
 @className('test-result-execution')
+@regions({
+    displayToggle: '.display__toggle'
+})
 class TestResultExecutionView extends View {
     template = template;
 
@@ -17,6 +21,7 @@ class TestResultExecutionView extends View {
         this.state = new Model();
         this.routeState = this.options.routeState;
         this.listenTo(this.state, 'change:attachment', this.highlightSelectedAttachment, this);
+        this.listenTo(settings, 'change', this.updateSteps);
     }
 
     onRender() {
@@ -24,6 +29,9 @@ class TestResultExecutionView extends View {
         if (attachment) {
             this.highlightSelectedAttachment(attachment);
         }
+        this.showChildView('displayToggle', new ExecutionDisplayToggleView({
+            stepDisplayParams: this.stepDisplayParams
+        }));
     }
 
     highlightSelectedAttachment(currentAttachment) {
@@ -35,6 +43,7 @@ class TestResultExecutionView extends View {
     }
 
     serializeData() {
+        this.stepDisplayParams = settings.getStepDisplayParams();
         const before = makeArray(this.model.get('beforeStages'));
         const test = makeArray(this.model.get('testStage'));
         const after = makeArray(this.model.get('afterStages'));
@@ -43,8 +52,24 @@ class TestResultExecutionView extends View {
             before: before,
             test: test,
             after: after,
-            baseUrl: this.options.baseUrl
+            baseUrl: this.options.baseUrl,
+            stepDisplayParams: this.stepDisplayParams
         };
+    }
+
+    updateSteps() {
+        var stepDisplayParams = settings.getStepDisplayParams();
+        if (this.isParamChanged(this.stepDisplayParams, stepDisplayParams, 'showStepStartTime')) {
+            this.$('.step-time').toggleClass('step-time__hidden');
+        }
+        if (this.isParamChanged(this.stepDisplayParams, stepDisplayParams, 'showDebugLogs')) {
+            this.$('.debug-log').toggleClass('debug-log__hidden');
+        }
+        this.stepDisplayParams = stepDisplayParams;
+    }
+
+    isParamChanged(oldParamList, newParamList, param) {
+        return oldParamList[param] !== newParamList[param];
     }
 
     @on('click .step__title_hasContent')

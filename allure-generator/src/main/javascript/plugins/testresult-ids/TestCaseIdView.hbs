@@ -1,0 +1,8 @@
+{{#if testCaseIds}}
+    <h3 class="pane__section-title">{{t 'testCase.ids.name'}}</h3>
+    {{#each testCaseIds}}
+        <span class="testcase-link">
+            {{this}}
+        </span>
+    {{/each}}
+{{/if}}

@@ -4,8 +4,8 @@
             {{~t 'testResult.stats.count.parameters' count=parameters.length~}}
              <span class="step-stats__info_separator">,&nbsp;</span>
          {{~/if~}}
-         {{~#if stepsCount ~}}
-            {{~t 'testResult.stats.count.steps' count=stepsCount~}}
+         {{~#if steps.length ~}}
+            {{~t 'testResult.stats.count.steps' count=steps.length~}}
             <span class="step-stats__info_separator">,&nbsp;</span>
         {{~/if~}}
         {{~#if attachmentsCount ~}}
@@ -13,5 +13,7 @@
             <span class="step-stats__info_separator">,&nbsp;</span>
         {{~/if~}}
     </span>
-    <span class="step-stats__info_time" data-tooltip="{{date time.start}} {{time time.start true}}&nbsp;&ndash;&nbsp;{{time time.stop true}}">{{duration time.duration}}</span>
+    {{#if time.duration}}
+        <span class="step-stats__info_time" data-tooltip="{{date time.start}} {{time time.start true}}&nbsp;&ndash;&nbsp;{{time time.stop true}}">{{duration time.duration}}</span>
+    {{/if}}
 </span>

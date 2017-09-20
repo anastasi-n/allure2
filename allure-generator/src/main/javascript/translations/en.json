@@ -40,7 +40,7 @@
       "launches": "launch",
       "launches_plural": "launches",
       "testResults": "test case",
-      "testResults_plural": "test cases"
+      "testResults_plural": "test cases",
       "scenariosWithoutExamples": "Scenarios (w/o examples)",
       "scenarios": "Scenarios",
       "stories": "Stories"
@@ -135,6 +135,10 @@
       "setup": "Set up",
       "teardown": "Tear down",
       "body": "Test body"
+    },
+    "display": {
+      "showStepStartTime": "Show step start time",
+      "showDebugLogs": "Show debug logs"
     },
     "stats": {
       "count": {

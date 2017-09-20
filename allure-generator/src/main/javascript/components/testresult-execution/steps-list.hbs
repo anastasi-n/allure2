@@ -1,11 +1,14 @@
 {{#each steps}}
-    <div class="step">
+    <div class="step {{#if muted}}debug-log {{#unless ../stepDisplayParams.showDebugLogs}}debug-log__hidden{{/unless}}{{/if}}">
         <div class="{{b "step" "title" hasContent=hasContent}} long-line">
             {{#if hasContent}}
                 <span class="step__arrow block__arrow">{{arrow status}}</span>
             {{else}}
                 <span class="step__status">{{allure-icon status}}</span>
             {{/if}}
+            <span class="step__time step-time {{#unless ../stepDisplayParams.showStepStartTime}}step-time__hidden{{/unless}}">
+            [{{time time.start}}]
+            </span>
             <div class="step__name">
             {{name}}
             </div>
@@ -13,10 +16,10 @@
         </div>
         <div class="step__content">
             {{> ../../blocks/parameters-table/parameters-table parameters=parameters }}
-            {{~> steps-list steps=steps baseUrl=../baseUrl}}
             {{#each attachments}}
                 {{> ../../blocks/attachment-row/attachment-row . baseUrl=../../baseUrl}}
             {{/each}}
+            {{~> steps-list steps=steps baseUrl=../baseUrl stepDisplayParams=../stepDisplayParams}}
             {{#if shouldDisplayMessage}}
                 {{#with statusDetails}}
                     {{~> ../../blocks/status-details/status-details . status=../status}}

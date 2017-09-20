@@ -43,6 +43,8 @@ import './plugins/testresult-severity';
 import './plugins/testresult-duration';
 import './plugins/testresult-parameters';
 import './plugins/testresult-links';
+import './plugins/testresult-groups';
+import './plugins/testresult-ids';
 
 window.jQuery = $;
 

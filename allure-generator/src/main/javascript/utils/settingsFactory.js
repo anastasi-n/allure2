@@ -3,7 +3,11 @@ import LocalStorageModel from '../data/localstorage/LocalStorageModel';
 const globalSettingsDefaults = {
     language: 'en',
     sidebarCollapsed: false,
-    totalResultSelectOption: 'scenariosWithoutExamplesStatistic'
+    totalResultSelectOption: 'scenariosWithoutExamplesStatistic',
+    stepDisplayParams: {
+        showStepStartTime: true,
+        showDebugLogs: false
+    }
 };
 
 const treePluginDefaults = {
@@ -55,6 +59,14 @@ function getGlobalSettings() {
 
         setTotalResultSelectOption(value) {
             return this.save('totalResultSelectOption', value);
+        },
+
+        getStepDisplayParams() {
+            return this.get('stepDisplayParams');
+        },
+
+        setStepDisplayParams(value) {
+            this.save('stepDisplayParams', value);
         }
     });
     const settings = new SettingsModel();

@@ -34,6 +34,7 @@ import './plugins/widget-history-trend';
 import './plugins/widget-suites';
 import './plugins/widget-categories';
 import './plugins/widget-executor';
+import './plugins/widget-timeline';
 import './plugins/widget-environment-configuration';
 import './plugins/widget-known-issues';
 

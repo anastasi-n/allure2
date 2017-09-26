@@ -212,7 +212,7 @@ class TimelineView extends BaseChartView {
                 .attrs({
                     'class': d => `timeline__item chart__fill_status_${d.status}`,
                     x: d => this.chartX(d.time.start),
-                    width: d => this.chartX(d.time.start + d.time.duration),
+                    width: d => this.chartX(d.time.stop) - this.chartX(d.time.start),
                     rx: 2,
                     ry: 2,
                     height: BAR_HEIGHT

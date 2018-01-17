@@ -92,8 +92,10 @@ class TreeView extends View {
         if (node) {
             const el = this.findElement(node);
             el.toggleClass('node__title_active', active);
-            this.changeState(node.testResult);
-            this.changeState(node.testGroup);
+            el.toggleClass('node__expanded', active);
+            el.parent('.node').toggleClass('node__expanded', active);
+            this.changeState(node.testResult, active);
+            this.changeState(node.testGroup, active);
         }
     }
 
@@ -130,8 +132,6 @@ class TreeView extends View {
     @on('click .node__title')
     onNodeClick(e) {
         const node = this.$(e.currentTarget);
-        const uid = node.data('uid');
-        this.changeState(uid, !this.state.has(uid));
         node.parent().toggleClass('node__expanded');
     }
 

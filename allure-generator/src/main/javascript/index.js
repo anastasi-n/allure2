@@ -45,6 +45,7 @@ import './plugins/testresult-parameters';
 import './plugins/testresult-links';
 import './plugins/testresult-groups';
 import './plugins/testresult-ids';
+import './plugins/testresult-requirements';
 
 window.jQuery = $;
 

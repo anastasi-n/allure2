@@ -1,0 +1,8 @@
+{{#if requirementIds}}
+    <h3 class="pane__section-title">{{t 'testCase.requirements.name'}}</h3>
+    {{#each requirementIds}}
+        <span class="testcase-link">
+            {{this}}
+        </span>
+    {{/each}}
+{{/if}}

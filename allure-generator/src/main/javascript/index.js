@@ -32,6 +32,7 @@ import './plugins/widget-history-trend';
 import './plugins/widget-timeline';
 import './plugins/widget-environment-configuration';
 import './plugins/widget-known-issues';
+import './plugins/widget-global-variables';
 
 import './plugins/testresult-description';
 import './plugins/testresult-tags';

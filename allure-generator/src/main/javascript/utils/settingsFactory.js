@@ -30,7 +30,7 @@ const treePluginDefaults = {
 };
 
 const widgetGridPluginDefaults = {
-    widgets: [[], []]
+    widgets: [['summary','timeline','knownIssues','globalVariables'],['history-trend','environment']]
 };
 
 function getGlobalSettings() {
